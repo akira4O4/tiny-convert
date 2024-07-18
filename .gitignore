@@ -1,0 +1,10 @@
+*.env
+*.onnx
+*.torchscript
+*.pt
+*.pth
+*.tar
+*.pyc
+*.engine
+.idea/
+.vscode
