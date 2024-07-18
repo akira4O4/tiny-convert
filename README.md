@@ -45,7 +45,7 @@ dynamic_shape = {
 If your model has multi input or output
 
 ```python
-input_names = ['images1', 'images']
+input_names = ['images1', 'images2']
 output_names = ['output1', 'output2']
 ```
 
