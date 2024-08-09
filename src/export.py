@@ -24,7 +24,10 @@ class Export:
         self.mode = mode
         self.shape = shape
         self.opset_version = opset_version
+
         self.output = output
+        self.save_path = output
+
         self.input_names = input_names
         self.output_names = output_names
         self.dynamic_axes = dynamic_axes
@@ -39,10 +42,12 @@ class Export:
         assert self.mode in ['onnx', 'torchscript'], 'mode type error'
 
         if self.mode == 'onnx':
-            self.save_path = os.path.join(self.output, 'model.onnx')
+            if os.path.isdir(self.save_path):
+                self.save_path = os.path.join(self.output, 'model.onnx')
 
         elif self.mode == 'torchscript':
-            self.save_path = os.path.join(self.output, 'model.torchscript')
+            if os.path.isdir(self.save_path):
+                self.save_path = os.path.join(self.output, 'model.torchscript')
 
     def make_dummy_input(self) -> torch.Tensor:
         assert len(self.shape) == 4, 'shape.len()!=4.'
