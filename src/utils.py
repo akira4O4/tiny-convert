@@ -6,7 +6,7 @@ def load_weight(model, path: str) -> None:
     assert model is not None, 'Model is None.'
     assert os.path.exists(path) is True, 'Weight path is not found.'
 
-    checkpoint = torch.load(path)
+    checkpoint = torch.load(path,map_location='cpu')
     static_dict = checkpoint['state_dict']
 
     model.load_state_dict(static_dict, strict=False)
